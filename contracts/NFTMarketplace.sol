@@ -13,12 +13,13 @@ contract NFTMarketplace is ERC721URIStorage {
     Counters.Counter private _tokenIds;
     Counters.Counter private _itemSold;
 
+    uint256 listingPrice = 0.0015 ether;
+
     address payable owner;
 
-    
     mapping(uint => MarketItem) private idMarketItem;
 
-    struct MarketItem{
+    struct MarketItem {
         uint256 tokenId;
         address payable seller;
         address payable owner;
@@ -26,16 +27,30 @@ contract NFTMarketplace is ERC721URIStorage {
         bool sold;
     }
 
-    event idMarketItemCreated{
+    event idMarketItemCreated(
         uint256 indexed tokenId,
         address seller,
         address owner,
         uint256 price,
         bool sold
-    };
+    );
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "You are not the owner");
+        _;
+    }
 
     constructor() ERC721("NFT Metavarse Token", "MYNFT") {
         owner = payable(msg.sender);
     }
 
+    function updateListingPrice(
+        uint256 _listingPrice
+    ) public payable onlyOwner {
+        listingPrice = _listingPrice;
+    }
+
+    function getListingPrice() public view returns (uint256) {
+        return listingPrice;
+    }
 }
