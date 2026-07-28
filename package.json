@@ -7,8 +7,9 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "npm run dev --prefix nft-marketplace",
+    "build": "npm run build --prefix nft-marketplace",
+    "start": "npm run start --prefix nft-marketplace"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.6",
