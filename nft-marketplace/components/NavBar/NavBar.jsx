@@ -48,6 +48,25 @@ const NavBar = () => {
       setNotification(false);
     }
   };
+
+  const openProfile = () => {
+    if (!profile) {
+      setDiscover(false);
+      setHelp(false);
+      setNotification(true);
+      setProfile(true);
+    } else {
+      setProfile(false);
+    }
+  };
+
+  const openSideBar = () => {
+    if (!openSideMenu) {
+      setOpenSideMenu(true);
+    } else {
+      setOpenSideMenu(false);
+    }
+  };
   return (
     <div className={Style.navbar}>
       <div className={Style.navbar_container}>
@@ -120,6 +139,12 @@ const NavBar = () => {
           </div>
         </div>
       </div>
+      //SideBar Component
+      {openSideMenu && (
+        <div classname={Style.SideBar}>
+          <SideBar setOpenSideMenu={setNotification} />
+        </div>
+      )}
     </div>
   );
 };
