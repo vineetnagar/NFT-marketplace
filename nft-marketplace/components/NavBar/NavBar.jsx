@@ -19,7 +19,7 @@ const NavBar = () => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   const openMenu = (e) => {
-    const btnText = e.target.innerText;
+    let btnText = e.target.innerText;
     if (btnText == "Discover") {
       setDiscover(true);
       setHelp(false);
@@ -70,7 +70,7 @@ const NavBar = () => {
   return (
     <div className={Style.navbar}>
       <div className={Style.navbar_container}>
-        //Left Section
+        {/*Left Section*/}
         <div className={Style.navbar_container_left}>
           <div className={Style.logo}>
             <Image
@@ -86,10 +86,10 @@ const NavBar = () => {
             <BsSearch onClick={() => {}} className={Style.search_icon} />
           </div>
         </div>
-        //Right Section
+        {/*Right Section*/}
         <div className={Style.navbar_container_right}>
           <div classname={Style.navbar_container_right_discover}>
-            //Discover Menu
+            {/*Discover Menu*/}
             <p onClick={(e) => openMenu(e)}>Discover</p>
             {discover && (
               <div classname={Style.navbar_container_right_discover_box}>
@@ -97,14 +97,14 @@ const NavBar = () => {
               </div>
             )}
           </div>
-          //Help Center Menu
+          {/*Help Center Menu*/}
           <div classname={Style.navbar_container_right - help}>
             <p onClick={(e) => openMenu(e)}>Help Center</p>
             {help && (
               <div classname={Style.navbar_container_right_help_box}></div>
             )}
           </div>
-          //Notification Center Menu
+          {/*Notification Center Menu*/}
           <div classname={Style.navbar_container_right_notify}>
             <MdNotifications
               classname={Style.notify}
@@ -112,11 +112,11 @@ const NavBar = () => {
             />
             {notification && <Notification />}
           </div>
-          //Create Button Section
+          {/*Create Button Section*/}
           <div classname={Style.navbar_container_right_button}>
             <Button btnText="Create" />
           </div>
-          //User Profile
+          {/*User Profile*/}
           <div classname={Style.navbar_container_right_profile_box}></div>
           <div classname={Style.navbar_container_right_profile}>
             <Image
@@ -130,7 +130,7 @@ const NavBar = () => {
 
             {profile && <Profile />}
           </div>
-          //Menu Button
+          {/*Menu Button*/}
           <div classname={Style.navbar_container_right_menuBtn}>
             <CgMenuRight
               classname={Style.menuIcon}
@@ -139,7 +139,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      //SideBar Component
+      {/*SideBar Component*/}
       {openSideMenu && (
         <div classname={Style.SideBar}>
           <SideBar setOpenSideMenu={setNotification} />
