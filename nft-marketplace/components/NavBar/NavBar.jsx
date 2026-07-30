@@ -53,7 +53,7 @@ const NavBar = () => {
     if (!profile) {
       setDiscover(false);
       setHelp(false);
-      setNotification(true);
+      setNotification(false);
       setProfile(true);
     } else {
       setProfile(false);
