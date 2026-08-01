@@ -1,0 +1,21 @@
+.navbar {
+  width: 100%;
+  padding-block: 1.5rem;
+  position: relative;
+  z-index: 111111111;
+}
+.navbar_container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.navbar_container_left {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
