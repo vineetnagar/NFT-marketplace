@@ -80,10 +80,11 @@ const NavBar = () => {
               height={100}
             />
           </div>
-          <div className={Style.navbar_container_left_box_input}></div>
-          <div className={Style.navbar_container_left_box_input_box}>
-            <input type="text" placeholder="Search NFT" />
-            <BsSearch onClick={() => {}} className={Style.search_icon} />
+          <div className={Style.navbar_container_left_box_input}>
+            <div className={Style.navbar_container_left_box_input_box}>
+              <input type="text" placeholder="Search NFT" />
+              <BsSearch onClick={() => {}} className={Style.search_icon} />
+            </div>
           </div>
         </div>
         {/*Right Section*/}
@@ -98,7 +99,7 @@ const NavBar = () => {
             )}
           </div>
           {/*Help Center Menu*/}
-          <div className={Style.navbar_container_right - help}>
+          <div className={Style.navbar_container_right_help}>
             <p onClick={(e) => openMenu(e)}>Help Center</p>
             {help && (
               <div className={Style.navbar_container_right_help_box}>
@@ -119,19 +120,21 @@ const NavBar = () => {
             <Button btnText="Create" />
           </div>
           {/*User Profile*/}
-          <div className={Style.navbar_container_right_profile_box}></div>
-          <div className={Style.navbar_container_right_profile}>
-            <Image
-              src={images.user1}
-              alt="Profile"
-              width={40}
-              height={40}
-              onClick={() => openProfile()}
-              className={Style.navbar_container_right_profile}
-            />
+          <div className={Style.navbar_container_right_profile_box}>
+            <div className={Style.navbar_container_right_profile}>
+              <Image
+                src={images.user1}
+                alt="Profile"
+                width={40}
+                height={40}
+                onClick={() => openProfile()}
+                className={Style.navbar_container_right_profile}
+              />
 
-            {profile && <Profile />}
+              {profile && <Profile />}
+            </div>
           </div>
+
           {/*Menu Button*/}
           <div className={Style.navbar_container_right_menuBtn}>
             <CgMenuRight
