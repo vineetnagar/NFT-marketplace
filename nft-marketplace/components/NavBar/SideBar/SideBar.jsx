@@ -47,13 +47,13 @@ const SideBar = ({ setOpenSideMenu }) => {
     setOpenSideMenu(false);
   };
   return (
-    <div className={Style.SideBar}>
+    <div className={Style.sideBar}>
       <GrClose
-        className={Style.SideBar_closeBtn}
+        className={Style.sideBar_closeBtn}
         onClick={() => closeSideBar()}
       />
 
-      <div className={Style.SideBar_box}>
+      <div className={Style.sideBar_box}>
         <Image src={images.logo} alt="logo" width={150} height={150} />
         <p>
           Discover the most outstanding articles on all the topics of NFT's and
@@ -77,10 +77,10 @@ const SideBar = ({ setOpenSideMenu }) => {
           </a>
         </div>
       </div>
-      <div className={Style.SideBar_menu}>
+      <div className={Style.sideBar_menu}>
         <div>
           <div
-            className={Style.SideBar_menu_box}
+            className={Style.sideBar_menu_box}
             onClick={() => openDiscoverMenu()}
           >
             <p>Discover</p>
@@ -88,7 +88,7 @@ const SideBar = ({ setOpenSideMenu }) => {
           </div>
 
           {openDiscover && (
-            <div className={Style.SideBar_discover}>
+            <div className={Style.sideBar_discover}>
               {discover.map((el, i) => (
                 <p key={i + 1}>
                   <Link href={{ pathname: `${el.link}` }}>{el.name}</Link>
@@ -100,7 +100,7 @@ const SideBar = ({ setOpenSideMenu }) => {
 
         <div>
           <div
-            className={Style.SideBar_menu_box}
+            className={Style.sideBar_menu_box}
             onClick={() => openHelpMenu()}
           >
             <p>Help Center</p>

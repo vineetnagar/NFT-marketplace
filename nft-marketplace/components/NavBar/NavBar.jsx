@@ -146,7 +146,7 @@ const NavBar = () => {
       </div>
       {/*SideBar Component*/}
       {openSideMenu && (
-        <div className={Style.SideBar}>
+        <div className={Style.sidebar}>
           <SideBar setOpenSideMenu={setNotification} />
         </div>
       )}

@@ -112,6 +112,7 @@
   overflow-y: auto;
   display: none;
   z-index: 11111;
+  color: black;
 }
 
 .sidebar::-webkit-scrollbar {
