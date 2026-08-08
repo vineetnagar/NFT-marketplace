@@ -16,7 +16,7 @@ import { Discover, HelpCenter } from "../NavBar/index";
 const Footer = () => {
   return (
     <div className={Style.footer}>
-      <div classname={Style.footer_box}>
+      <div className={Style.footer_box}>
         <div className={Style.footer_box_social}>
           <Image src={images.logo} alt="footer logo" height={100} width={100} />
           <p>
@@ -26,19 +26,19 @@ const Footer = () => {
           </p>
 
           <div className={Style.footer_social}>
-            <a href="">
+            <a href="#">
               <TiSocialFacebook />
             </a>
-            <a href="">
+            <a href="#">
               <TiSocialLinkedin />
             </a>
-            <a href="">
+            <a href="#">
               <TiSocialTwitter />
             </a>
-            <a href="">
+            <a href="#">
               <TiSocialYoutube />
             </a>
-            <a href="">
+            <a href="#">
               <TiSocialInstagram />
             </a>
           </div>
@@ -56,6 +56,7 @@ const Footer = () => {
 
         <div className={Style.subscribe}>
           <h3>Subscribe</h3>
+
           <div className={Style.subscribe_box}>
             <input type="email" placeholder="Enter your email *" />
             <RiSendPlaneFill className={Style.subscribe_box_send} />
