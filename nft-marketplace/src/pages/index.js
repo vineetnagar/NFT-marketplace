@@ -6,6 +6,7 @@ import {
   BigNFTSlider,
   Subscribe,
   Title,
+  Category,
 } from "../../components/NavBar/componentIndex";
 
 const index = () => {
@@ -14,11 +15,12 @@ const index = () => {
       <HeroSection />
       <Service />
       <BigNFTSlider />
-      <Subscribe />
       <Title
         heading="Browse by category"
         paragraph="Explore the NFTs in the most featured categories."
       />
+      <Category />
+      <Subscribe />
     </div>
   );
 };
