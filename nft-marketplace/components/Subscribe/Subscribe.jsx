@@ -1,7 +1,8 @@
 import React from "react";
 import Style from "./Subscribe.module.css";
+import Image from "next/image";
 import { RiSendPlaneFill } from "react-icons/ri";
-import images from ".././img";
+import images from "../../img";
 
 const Subscribe = () => {
   return (
@@ -17,9 +18,10 @@ const Subscribe = () => {
             <span>01</span>
             <small>Get more discount</small>
           </div>
+
           <div className={Style.subscribe_box_left_box}>
             <span>02</span>
-            <small>Get more magazines</small>
+            <small>Get premium magazines</small>
           </div>
 
           <div className={Style.subscribe_box_left_input}>
@@ -32,8 +34,8 @@ const Subscribe = () => {
           <Image
             src={images.update}
             alt="get update"
-            height={600}
-            width={800}
+            height={500}
+            width={700}
           />
         </div>
       </div>
