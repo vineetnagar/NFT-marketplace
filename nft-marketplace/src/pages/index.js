@@ -4,6 +4,7 @@ import {
   HeroSection,
   Service,
   BigNFTSlider,
+  Subscribe,
 } from "../../components/NavBar/componentIndex";
 
 const index = () => {
@@ -12,6 +13,7 @@ const index = () => {
       <HeroSection />
       <Service />
       <BigNFTSlider />
+      <Subscribe />
     </div>
   );
 };
