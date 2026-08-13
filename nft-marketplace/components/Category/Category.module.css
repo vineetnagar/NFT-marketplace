@@ -33,6 +33,11 @@
   padding: 1rem;
   gap: 1rem;
 }
+
+.category_box_title span {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
 @media screen and (min-device-width: 320px) and (max-device-width: 425px) {
   .box_category {
     width: 90%;
