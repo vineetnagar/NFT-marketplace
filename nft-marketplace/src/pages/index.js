@@ -9,6 +9,8 @@ import {
   Category,
   Filter,
   NFTCard,
+  Collection,
+  DaysComponent,
 } from "../../components/NavBar/componentIndex";
 
 const index = () => {
@@ -17,6 +19,11 @@ const index = () => {
       <HeroSection />
       <Service />
       <BigNFTSlider />
+      <Title
+        heading="New Collection "
+        paragraph="Discover the most outstanding NFTs in all topics of life,"
+      />
+      <Collection />
       <Title
         heading="Featured NFTs"
         paragraph="Discover the most outstanding NFTs in all topics of life,"

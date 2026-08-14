@@ -9,6 +9,8 @@ import Title from "../Title/Title";
 import Category from "../Category/Category";
 import Filter from "../Filter/Filter";
 import NFTCard from "../NFTCard/NFTCard";
+import Collection from "../Collection/Collection";
+import DaysComponent from "../Collection/DaysComponent/DaysComponent";
 
 export {
   Button,
@@ -22,4 +24,6 @@ export {
   Category,
   Filter,
   NFTCard,
+  Collection,
+  DaysComponent,
 };
