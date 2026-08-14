@@ -34,8 +34,8 @@ const Subscribe = () => {
           <Image
             src={images.update}
             alt="get update"
-            height={500}
-            width={700}
+            height={600}
+            width={800}
           />
         </div>
       </div>

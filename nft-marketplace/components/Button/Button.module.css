@@ -6,8 +6,8 @@
   font-size: 1.1rem;
   color: var(--shadow-light-color);
   cursor: pointer;
-  text-align: center;
   transition: all 0.2s ease-in;
+  box-shadow: var(--box-shadow);
 }
 
 .button:hover {

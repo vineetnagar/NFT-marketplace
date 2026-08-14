@@ -16,7 +16,6 @@
   padding: 2rem;
   z-index: 1111;
   height: 90vh;
-  color: black;
 }
 
 .bigNFTSlider_box_left h2 {
@@ -33,7 +32,6 @@
   box-shadow: var(--box-shadow-2);
 }
 
-/* //CREATOR SECTION */
 .bigNFTSlider_box_left_creator {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -131,7 +129,6 @@
 .bigNFTSlider_box_left_sliderBtn_icon {
   cursor: pointer;
   transition: all 0.3s ease-in;
-  color: #fff;
 }
 
 .bigNFTSlider_box_left_sliderBtn_icon:hover {

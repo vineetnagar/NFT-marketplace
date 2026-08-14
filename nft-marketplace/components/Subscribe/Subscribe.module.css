@@ -6,6 +6,7 @@
   width: 80%;
   margin: 0 auto;
   padding: 8rem 0;
+
   display: grid;
   grid-template-columns: 1.5fr 2fr;
   align-items: center;
@@ -14,7 +15,6 @@
 .subscribe_box_left h2 {
   font-size: 3rem;
   line-height: 0;
-  color: var(--icons-color);
 }
 
 .subscribe_box p {
@@ -48,7 +48,8 @@
   width: 80%;
   border-radius: 4rem;
   background-color: var(--icons-color);
-  color: (--main-bg-color);
+  color: var(--main-bg-color);
+
   display: flex;
   align-items: center;
 }
@@ -64,13 +65,17 @@
   color: var(--main-bg-color);
   font-size: 1.2rem;
 }
-@media screen and (min_device-width: 320px) and (max-device-width: 768px) {
+
+.subscribe_box_left_input_icon {
+  font-size: 2rem;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .subscribe_box {
     width: 90%;
     grid-template-columns: 1fr;
     gap: 4rem;
   }
-
   .subscribe_box_left_input {
     width: 100%;
     padding: 1rem;
@@ -81,16 +86,18 @@
   }
 }
 
-@media screen and (min_device-width: 768px) and (max-device-width: 1024px) {
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .subscribe_box {
     width: 90%;
     grid-template-columns: repeat(2, 1fr);
     gap: 4rem;
   }
+
   .subscribe_box_left_input {
     width: 100%;
     padding: 1rem;
   }
+
   .subscribe_box_left h2 {
     font-size: 2rem;
   }

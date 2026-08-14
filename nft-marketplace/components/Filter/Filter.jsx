@@ -51,15 +51,16 @@ const Filter = () => {
       setMusic(false);
     }
   };
+
   return (
-    <div vlassName={Style.filter}>
+    <div className={Style.filter}>
       <div className={Style.filter_box}>
         <div className={Style.filter_box_left}>
           <button onClick={() => {}}>NFTs</button>
           <button onClick={() => {}}>Arts</button>
           <button onClick={() => {}}>Musics</button>
           <button onClick={() => {}}>Sports</button>
-          <button onClick={() => {}}>Photgraphy</button>
+          <button onClick={() => {}}>Photography</button>
         </div>
 
         <div className={Style.filter_box_right}>
@@ -97,7 +98,7 @@ const Filter = () => {
               className={Style.filter_box_items_box_item_trans}
               onClick={() => openVideo()}
             >
-              <FaVideo /> <span>Videos</span>
+              <FaVideo /> <small>Videos</small>
               {video ? <AiFillCloseCircle /> : <TiTick />}
             </div>
           </div>
@@ -107,8 +108,7 @@ const Filter = () => {
               className={Style.filter_box_items_box_item_trans}
               onClick={() => openMusic()}
             >
-              <FaMusic />
-              <span>Musics</span>
+              <FaMusic /> <small>Musics</small>
               {music ? <AiFillCloseCircle /> : <TiTick />}
             </div>
           </div>

@@ -38,6 +38,7 @@
   font-size: 3rem;
   margin-top: 1rem;
 }
+
 @media screen and (min-device-width: 320px) and (max-device-width: 425px) {
   .box_category {
     width: 90%;

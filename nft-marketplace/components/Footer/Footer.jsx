@@ -13,6 +13,7 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import Style from "./Footer.module.css";
 import images from "../../img";
 import { Discover, HelpCenter } from "../NavBar/index";
+
 const Footer = () => {
   return (
     <div className={Style.footer}>

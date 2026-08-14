@@ -2,17 +2,12 @@ import React from "react";
 
 import Style from "./Button.module.css";
 
-const Button = ({ btnName, handleClick, className = "" }) => {
+const Button = ({ btnName, handleClick }) => {
   return (
     <div className={Style.box}>
-      <div
-        className={`${Style.button} ${className}`.trim()}
-        onClick={() => {
-          handleClick();
-        }}
-      >
+      <button className={Style.button} onClick={() => handleClick()}>
         {btnName}
-      </div>
+      </button>
     </div>
   );
 };

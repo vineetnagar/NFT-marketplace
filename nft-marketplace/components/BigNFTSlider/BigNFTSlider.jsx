@@ -3,8 +3,6 @@ import Image from "next/image";
 import { AiFillFire, AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { MdVerified, MdTimer } from "react-icons/md";
 import { TbArrowBigLeftLines, TbArrowBigRightLine } from "react-icons/tb";
-
-//INTERNAL IMPORT
 import Style from "./BigNFTSlider.module.css";
 import images from "../../img";
 import Button from "../Button/Button";
@@ -79,14 +77,12 @@ const BigNFTSilder = () => {
     },
   ];
 
-  //-------INC
   const inc = useCallback(() => {
     if (idNumber + 1 < sliderData.length) {
       setIdNumber(idNumber + 1);
     }
   }, [idNumber, sliderData.length]);
 
-  //-------DEC
   const dec = useCallback(() => {
     if (idNumber > 0) {
       setIdNumber(idNumber - 1);
