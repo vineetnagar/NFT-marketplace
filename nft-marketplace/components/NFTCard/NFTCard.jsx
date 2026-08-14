@@ -6,6 +6,7 @@ import Image from "next/image";
 import images from "../../img";
 const NFTCard = () => {
   const featureArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   const [like, setLike] = useState(true);
 
   const likeNft = () => {
@@ -15,6 +16,7 @@ const NFTCard = () => {
       setLike(false);
     }
   };
+
   return (
     <div className={Style.NFTCard}>
       {featureArray.map((el, i) => (
@@ -23,9 +25,9 @@ const NFTCard = () => {
             <Image
               src={images.nft_image_1}
               alt="NFT images"
-              height={600}
               width={600}
-              classname={Style.NFTCard_box_img_img}
+              height={600}
+              className={Style.NFTCard_box_img_img}
             />
           </div>
 
@@ -35,7 +37,6 @@ const NFTCard = () => {
                 className={Style.NFTCard_box_update_left_like}
                 onClick={() => likeNft()}
               >
-                {" "}
                 {like ? (
                   <AiOutlineHeart />
                 ) : (
@@ -57,17 +58,16 @@ const NFTCard = () => {
 
           <div className={Style.NFTCard_box_update_details}>
             <div className={Style.NFTCard_box_update_details_price}>
-              <div classname={Style.NFTCard_box_update_details_price_box}>
-                <h4> Clone #17373</h4>
+              <div className={Style.NFTCard_box_update_details_price_box}>
+                <h4>Clone #17373</h4>
 
                 <div className={Style.NFTCard_box_update_details_price_box_box}>
                   <div
                     className={Style.NFTCard_box_update_details_price_box_bid}
                   >
-                    <small>Current bid</small>
+                    <small>Current Bid</small>
                     <p>1.000ETH</p>
                   </div>
-
                   <div
                     className={Style.NFTCard_box_update_details_price_box_stock}
                   >
@@ -76,7 +76,6 @@ const NFTCard = () => {
                 </div>
               </div>
             </div>
-
             <div className={Style.NFTCard_box_update_details_category}>
               <BsImages />
             </div>
