@@ -18,14 +18,58 @@ import Button from "../../Button/Button";
 const SideBar = ({ setOpenSideMenu }) => {
   const [openDiscover, setOpenDiscover] = useState(false);
   const [openHelp, setOpenHelp] = useState(false);
+
   const discover = [
-    { name: "Collection", link: "collection" },
-    { name: "Search", link: "search" },
-    { name: "Author Profile", link: "author-profile" },
-    { name: "NFT Details", link: "NFT-details" },
-    { name: "Account Setting", link: "account-setting" },
-    { name: "Connect Wallet", link: "connect-wallet" },
-    { name: "Blog", link: "blog" },
+    {
+      name: "Collection",
+      link: "collection",
+    },
+    {
+      name: "Search",
+      link: "search",
+    },
+    {
+      name: "Author Profile",
+      link: "author-profile",
+    },
+    {
+      name: "NFT Details",
+      link: "NFT-details",
+    },
+    {
+      name: "Account Setting",
+      link: "account-setting",
+    },
+    {
+      name: "Connect Wallet",
+      link: "connect-wallet",
+    },
+    {
+      name: "Blog",
+      link: "blog",
+    },
+  ];
+  const helpCenter = [
+    {
+      name: "About",
+      link: "about",
+    },
+    {
+      name: "Contact Us",
+      link: "contact-us",
+    },
+    {
+      name: "Sign Up",
+      link: "sign-up",
+    },
+    {
+      name: "Sign In",
+      link: "sign-in",
+    },
+    {
+      name: "Subscription",
+      link: "subscription",
+    },
   ];
 
   const openDiscoverMenu = () => {
@@ -35,6 +79,7 @@ const SideBar = ({ setOpenSideMenu }) => {
       setOpenDiscover(false);
     }
   };
+
   const openHelpMenu = () => {
     if (!openHelp) {
       setOpenHelp(true);
@@ -46,6 +91,7 @@ const SideBar = ({ setOpenSideMenu }) => {
   const closeSideBar = () => {
     setOpenSideMenu(false);
   };
+
   return (
     <div className={Style.sideBar}>
       <GrClose
@@ -56,8 +102,8 @@ const SideBar = ({ setOpenSideMenu }) => {
       <div className={Style.sideBar_box}>
         <Image src={images.logo} alt="logo" width={150} height={150} />
         <p>
-          Discover the most outstanding articles on all the topics of NFT's and
-          your own stories and share them.{" "}
+          Discover the most outstanding articles on all topices of NFT & write
+          your own stories and share them
         </p>
         <div className={Style.sideBar_social}>
           <a href="#">
@@ -77,6 +123,7 @@ const SideBar = ({ setOpenSideMenu }) => {
           </a>
         </div>
       </div>
+
       <div className={Style.sideBar_menu}>
         <div>
           <div
@@ -111,7 +158,7 @@ const SideBar = ({ setOpenSideMenu }) => {
             <div className={Style.sideBar_discover}>
               {helpCenter.map((el, i) => (
                 <p key={i + 1}>
-                  <Link href={{ pathname: `${el.Link}` }}>{el.name}</Link>
+                  <Link href={{ pathname: `${el.link}` }}>{el.name}</Link>
                 </p>
               ))}
             </div>
@@ -121,7 +168,7 @@ const SideBar = ({ setOpenSideMenu }) => {
 
       <div className={Style.sideBar_button}>
         <Button btnName="Create" handleClick={() => {}} />
-        <Button btnName="Connect wallet" handleClick={() => {}} />
+        <Button btnName="Connect Wallet" handleClick={() => {}} />
       </div>
     </div>
   );

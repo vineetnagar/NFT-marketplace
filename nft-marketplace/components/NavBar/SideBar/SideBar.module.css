@@ -9,6 +9,7 @@
   top: 3rem;
   right: 2rem;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
   box-shadow: var(--box-shadow);
 }
 
@@ -36,7 +37,7 @@
 
 .sideBar_social a:hover {
   background-color: var(--icons-color);
-  color: var(--shadow-color);
+  color: var(--shadow-dark-color);
   box-shadow: 1px solid var(--icons-color);
 }
 

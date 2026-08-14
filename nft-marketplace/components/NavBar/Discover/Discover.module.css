@@ -6,6 +6,6 @@
 
 .discover:hover {
   background-color: var(--icons-color);
-  color: (--shadow-dark-color);
+  color: var(--shadow-dark-color);
   border-radius: 0.3rem;
 }

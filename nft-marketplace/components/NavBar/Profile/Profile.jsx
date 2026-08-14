@@ -18,11 +18,13 @@ const Profile = () => {
           height={50}
           className={Style.profile_account_img}
         />
+
         <div className={Style.profile_account_info}>
-          <p>Mohit Singh</p>
-          <small>X0384993829202023</small>
+          <p>Vineet Nagar</p>
+          <small>X038499382920203...</small>
         </div>
       </div>
+
       <div className={Style.profile_menu}>
         <div className={Style.profile_menu_one}>
           <div className={Style.profile_menu_one_item}>
@@ -34,7 +36,7 @@ const Profile = () => {
           <div className={Style.profile_menu_one_item}>
             <FaRegImage />
             <p>
-              <Link href={{ pathname: "/my-items" }}>My Item</Link>
+              <Link href={{ pathname: "/my-items" }}>My Items</Link>
             </p>
           </div>
           <div className={Style.profile_menu_one_item}>
@@ -55,7 +57,7 @@ const Profile = () => {
           <div className={Style.profile_menu_one_item}>
             <TbDownload />
             <p>
-              <Link href={{ pathname: "/disconnect" }}>Disconnect</Link>
+              <Link href={{ pathname: "/disconnet" }}>Disconnet</Link>
             </p>
           </div>
         </div>

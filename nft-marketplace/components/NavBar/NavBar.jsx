@@ -11,7 +11,6 @@ import { Button } from "./componentIndex";
 import images from "../../img";
 
 const NavBar = () => {
-  //UseState
   const [discover, setDiscover] = useState(false);
   const [help, setHelp] = useState(false);
   const [notification, setNotification] = useState(false);
@@ -19,13 +18,13 @@ const NavBar = () => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   const openMenu = (e) => {
-    let btnText = e.target.innerText;
+    const btnText = e.target.innerText;
     if (btnText == "Discover") {
       setDiscover(true);
       setHelp(false);
       setNotification(false);
       setProfile(false);
-    } else if ((btnText = "Help Center")) {
+    } else if (btnText == "Help Center") {
       setDiscover(false);
       setHelp(true);
       setNotification(false);
@@ -40,9 +39,9 @@ const NavBar = () => {
 
   const openNotification = () => {
     if (!notification) {
+      setNotification(true);
       setDiscover(false);
       setHelp(false);
-      setNotification(true);
       setProfile(false);
     } else {
       setNotification(false);
@@ -51,10 +50,10 @@ const NavBar = () => {
 
   const openProfile = () => {
     if (!profile) {
-      setDiscover(false);
-      setHelp(false);
-      setNotification(false);
       setProfile(true);
+      setHelp(false);
+      setDiscover(false);
+      setNotification(false);
     } else {
       setProfile(false);
     }
@@ -67,10 +66,10 @@ const NavBar = () => {
       setOpenSideMenu(false);
     }
   };
+
   return (
     <div className={Style.navbar}>
       <div className={Style.navbar_container}>
-        {/*Left Section*/}
         <div className={Style.navbar_container_left}>
           <div className={Style.logo}>
             <Image
@@ -87,10 +86,9 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-        {/*Right Section*/}
+
         <div className={Style.navbar_container_right}>
           <div className={Style.navbar_container_right_discover}>
-            {/*Discover Menu*/}
             <p onClick={(e) => openMenu(e)}>Discover</p>
             {discover && (
               <div className={Style.navbar_container_right_discover_box}>
@@ -98,7 +96,7 @@ const NavBar = () => {
               </div>
             )}
           </div>
-          {/*Help Center Menu*/}
+
           <div className={Style.navbar_container_right_help}>
             <p onClick={(e) => openMenu(e)}>Help Center</p>
             {help && (
@@ -107,7 +105,7 @@ const NavBar = () => {
               </div>
             )}
           </div>
-          {/*Notification Center Menu*/}
+
           <div className={Style.navbar_container_right_notify}>
             <MdNotifications
               className={Style.notify}
@@ -115,15 +113,11 @@ const NavBar = () => {
             />
             {notification && <Notification />}
           </div>
-          {/*Create Button Section*/}
+
           <div className={Style.navbar_container_right_button}>
-            <Button
-              btnName="Create"
-              handleClick={() => {}}
-              className={Style.navbar_create_btn}
-            />
+            <Button btnName="Create" handleClick={() => {}} />
           </div>
-          {/*User Profile*/}
+
           <div className={Style.navbar_container_right_profile_box}>
             <div className={Style.navbar_container_right_profile}>
               <Image
@@ -139,7 +133,6 @@ const NavBar = () => {
             </div>
           </div>
 
-          {/*Menu Button*/}
           <div className={Style.navbar_container_right_menuBtn}>
             <CgMenuRight
               className={Style.menuIcon}
@@ -148,10 +141,10 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      {/*SideBar Component*/}
+
       {openSideMenu && (
-        <div className={Style.sidebar}>
-          <SideBar setOpenSideMenu={setNotification} />
+        <div className={Style.sideBar}>
+          <SideBar setOpenSideMenu={setOpenSideMenu} />
         </div>
       )}
     </div>

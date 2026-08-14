@@ -4,17 +4,17 @@ import images from "../../../img";
 import Image from "next/image";
 import { MdVerified } from "react-icons/md";
 
-const DaysComponent = () => {
+const DaysComponents = ({ el, i }) => {
   return (
     <div className={Style.daysComponent}>
       <div className={Style.daysComponent_box}>
-        <div classNam={Style.daysComponent_box_img}>
+        <div className={Style.daysComponent_box_img}>
           <Image
-            src={images.creatorbackground1}
-            alt="Profile background"
+            src={images.background}
+            className={Style.daysComponent_box_img_img}
+            alt="profile background"
             width={500}
             height={300}
-            className={Style.daysComponent_box_img_img}
             objectFit="covers"
           />
         </div>
@@ -47,7 +47,7 @@ const DaysComponent = () => {
         </div>
 
         <div className={Style.daysComponent_box_title}>
-          <h2>Amazing collection</h2>
+          <h2>Amazing Collection</h2>
           <div className={Style.daysComponent_box_title_info}>
             <div className={Style.daysComponent_box_title_info_profile}>
               <Image
@@ -58,10 +58,11 @@ const DaysComponent = () => {
                 objectFit="covers"
                 className={Style.daysComponent_box_title_info_profile_img}
               />
+
               <p>
-                Creator{" "}
+                Creator
                 <span>
-                  Vineet Nagar{" "}
+                  Shoaib Bhai
                   <small>
                     <MdVerified />
                   </small>
@@ -69,7 +70,7 @@ const DaysComponent = () => {
               </p>
             </div>
 
-            <div className={Style.daysComponent_box_title_info_profile}>
+            <div className={Style.daysComponent_box_title_info_price}>
               <small>1.255 ETH</small>
             </div>
           </div>
@@ -79,4 +80,4 @@ const DaysComponent = () => {
   );
 };
 
-export default DaysComponent;
+export default DaysComponents;
