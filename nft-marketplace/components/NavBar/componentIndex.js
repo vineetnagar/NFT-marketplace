@@ -13,6 +13,10 @@ import Collection from "../Collection/Collection";
 import DaysComponent from "../Collection/DaysComponent/DaysComponent";
 import Follower from "../Follower/Follower";
 import FollowerTabCard from "../Follower/FollowerTabCard/FollowerTabCard";
+import AudioLive from "../AudioLive/AudioLive";
+import AudioCard from "../AudioLive/AudioCard/AudioCard";
+import AudioCardSmall from "../AudioLive/AudioCardSmall/AudioCardSmall";
+import LikeProfile from "../LikeProfile/LikeProfile";
 
 export {
   Button,
@@ -30,4 +34,8 @@ export {
   DaysComponent,
   Follower,
   FollowerTabCard,
+  AudioLive,
+  AudioCard,
+  AudioCardSmall,
+  LikeProfile,
 };

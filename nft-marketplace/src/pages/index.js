@@ -11,6 +11,7 @@ import {
   NFTCard,
   Collection,
   Follower,
+  AudioLive,
 } from "../../components/NavBar/componentIndex";
 
 const index = () => {
@@ -20,9 +21,11 @@ const index = () => {
       <Service />
       <BigNFTSlider />
       <Title
-        heading="New Collection "
+        heading="Audio Collection"
         paragraph="Discover the most outstanding NFTs in all topics of life,"
       />
+      <AudioLive />
+
       <Follower />
       <Collection />
       <Title
