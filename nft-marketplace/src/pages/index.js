@@ -10,7 +10,7 @@ import {
   Filter,
   NFTCard,
   Collection,
-  DaysComponent,
+  Follower,
 } from "../../components/NavBar/componentIndex";
 
 const index = () => {
@@ -23,6 +23,7 @@ const index = () => {
         heading="New Collection "
         paragraph="Discover the most outstanding NFTs in all topics of life,"
       />
+      <Follower />
       <Collection />
       <Title
         heading="Featured NFTs"

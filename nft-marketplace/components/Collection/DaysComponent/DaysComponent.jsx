@@ -10,11 +10,11 @@ const DaysComponents = ({ el, i }) => {
       <div className={Style.daysComponent_box}>
         <div className={Style.daysComponent_box_img}>
           <Image
-            src={images.background}
+            src={images.creatorbackground1}
             className={Style.daysComponent_box_img_img}
             alt="profile background"
-            width={500}
-            height={300}
+            width={470}
+            height={200}
             objectFit="covers"
           />
         </div>
@@ -23,24 +23,24 @@ const DaysComponents = ({ el, i }) => {
           <Image
             src={images.creatorbackground2}
             alt="profile"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
             className={Style.daysComponent_box_img_1}
             objectFit="covers"
           />
           <Image
             src={images.creatorbackground2}
             alt="profile"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
             className={Style.daysComponent_box_img_2}
             objectFit="covers"
           />
           <Image
             src={images.creatorbackground2}
             alt="profile"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
             className={Style.daysComponent_box_img_3}
             objectFit="covers"
           />
@@ -62,7 +62,7 @@ const DaysComponents = ({ el, i }) => {
               <p>
                 Creator
                 <span>
-                  Shoaib Bhai
+                  Vineet Nagar
                   <small>
                     <MdVerified />
                   </small>
