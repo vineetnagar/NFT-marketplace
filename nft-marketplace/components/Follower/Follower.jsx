@@ -8,7 +8,7 @@ import {
   RiAwardLine,
 } from "react-icons/ri";
 
-const Follower = () => {
+const FollowerTab = () => {
   const CardArray = [1, 2, 3, 4, 5, 6, 7, 8];
   const FollowingArray = [1, 2, 3, 4, 5, 6];
   const NewsArray = [1, 2, 3, 4, 5];
@@ -24,15 +24,13 @@ const Follower = () => {
       setNews(false);
     }
   };
-
-  const openFollowing = () => {
+  const openFollower = () => {
     if (!following) {
       setPopular(false);
       setFollowing(true);
       setNews(false);
     }
   };
-
   const openNews = () => {
     if (!news) {
       setPopular(false);
@@ -40,22 +38,21 @@ const Follower = () => {
       setNews(true);
     }
   };
+
   return (
     <div className={Style.followerTab}>
       <div className={Style.followerTab_title}>
-        <h2>Top Creators List...</h2>
+        <h2> Top Creators List..</h2>
         <div className={Style.followerTab_tabs}>
           <div className={Style.followerTab_tabs_btn}>
             <button onClick={() => openPopular()}>
-              <RiUserFollowFill />
-              Popular
+              <RiUserFollowFill /> Popular
             </button>
             <button onClick={() => openFollower()}>
-              <RiUserUnfollowFill />
-              Following Popular
+              <RiUserFollowFill /> Following
             </button>
             <button onClick={() => openNews()}>
-              <RiAwardLine /> NoteWorthy Popular
+              <RiAwardLine /> NoteWorthy
             </button>
           </div>
         </div>
@@ -74,25 +71,25 @@ const Follower = () => {
           {FollowingArray.map((el, i) => (
             <FollowerTabCard key={i + 1} i={i} el={el} />
           ))}
+        </div>
+      )}
 
-          {news && (
-            <div className={Style.followerTab_box}>
-              {NewsArray.map((el, i) => (
-                <FollowerTabCard key={i + 1} i={i} el={el} />
-              ))}
-            </div>
-          )}
+      {news && (
+        <div className={Style.followerTab_box}>
+          {NewsArray.map((el, i) => (
+            <FollowerTabCard key={i + 1} i={i} el={el} />
+          ))}
         </div>
       )}
 
       <div className={Style.followerTab_member}>
-        <div classAnme={Style.followerTab_member_box}>
+        <div className={Style.followerTab_member_box}>
           <a href="#">Show me more</a>
-          <a href="#">Become Author</a>
+          <a href="#">Become, author</a>
         </div>
       </div>
     </div>
   );
 };
 
-export default Follower;
+export default FollowerTab;
