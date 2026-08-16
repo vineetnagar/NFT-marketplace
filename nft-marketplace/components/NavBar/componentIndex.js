@@ -17,6 +17,8 @@ import AudioLive from "../AudioLive/AudioLive";
 import AudioCard from "../AudioLive/AudioCard/AudioCard";
 import AudioCardSmall from "../AudioLive/AudioCardSmall/AudioCardSmall";
 import LikeProfile from "../LikeProfile/LikeProfile";
+import Slider from "../Slider/Slider";
+import SliderCard from "../Slider/SliderCard/SliderCard";
 
 export {
   Button,
@@ -38,4 +40,6 @@ export {
   AudioCard,
   AudioCardSmall,
   LikeProfile,
+  Slider,
+  SliderCard,
 };

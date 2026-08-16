@@ -12,6 +12,7 @@ import {
   Collection,
   Follower,
   AudioLive,
+  Slider,
 } from "../../components/NavBar/componentIndex";
 
 const index = () => {
@@ -25,8 +26,12 @@ const index = () => {
         paragraph="Discover the most outstanding NFTs in all topics of life,"
       />
       <AudioLive />
-
       <Follower />
+      <Title
+        heading="Explore NFT's Video"
+        paragraph="Click on play icon and enjoy NFT's video"
+      />
+      <Slider />
       <Collection />
       <Title
         heading="Featured NFTs"
