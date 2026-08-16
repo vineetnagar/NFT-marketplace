@@ -6,12 +6,14 @@ import images from "../../img";
 
 const Category = () => {
   const CategoryArray = [
-    images.creatorbackground1,
-    images.creatorbackground10,
-    images.creatorbackground11,
-    images.creatorbackground2,
-    images.creatorbackground4,
-    images.creatorbackground5,
+    { background: images.creatorbackground1 },
+    { background: images.creatorbackground2 },
+    { background: images.creatorbackground3 },
+    { background: images.creatorbackground4 },
+    { background: images.creatorbackground5 },
+    { background: images.creatorbackground6 },
+    { background: images.creatorbackground7 },
+    { background: images.creatorbackground8 },
   ];
   return (
     <div className={Style.box_category}>
@@ -19,11 +21,11 @@ const Category = () => {
         {CategoryArray.map((el, i) => (
           <div className={Style.category_box} key={1 + 1}>
             <Image
-              src={el}
+              src={el.background}
               className={Style.category_box_img}
               alt="Background image"
               width={350}
-              height={150}
+              height={80}
               objectFit="cover"
             />
 
