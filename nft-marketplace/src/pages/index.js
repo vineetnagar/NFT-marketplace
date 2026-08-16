@@ -13,6 +13,7 @@ import {
   Follower,
   AudioLive,
   Slider,
+  Brand,
 } from "../../components/NavBar/componentIndex";
 
 const index = () => {
@@ -44,6 +45,7 @@ const index = () => {
         paragraph="Explore the NFTs in the most featured categories."
       />
       <Category />
+      <Brand />
       <Subscribe />
     </div>
   );
