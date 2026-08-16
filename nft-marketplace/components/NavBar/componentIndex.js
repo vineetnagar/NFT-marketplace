@@ -20,6 +20,7 @@ import LikeProfile from "../LikeProfile/LikeProfile";
 import Slider from "../Slider/Slider";
 import SliderCard from "../Slider/SliderCard/SliderCard";
 import Brand from "../Brand/Brand";
+import Video from "../Video/Video";
 
 export {
   Button,
@@ -44,4 +45,5 @@ export {
   Slider,
   SliderCard,
   Brand,
+  Video,
 };
