@@ -1,0 +1,54 @@
+import React, { useState, useEffect } from "react";
+import Style from "../styles/author.module.css";
+import { Banner, NFTCardtwo } from "../../collectionPage/collectionIndex";
+import { Brand, Title } from "../../components/NavBar/componentIndex";
+import { FollowerTabCard } from "../../components/NavBar/componentIndex";
+import images from "../../img";
+import {
+  AuthorProfileCard,
+  AuthorTaps,
+  TabCard,
+} from "../../authorPage/componentIndex";
+
+const Author = () => {
+  const popularArray = [
+    images.user1,
+    images.user2,
+    images.user3,
+    images.user4,
+    images.user5,
+    images.user6,
+    images.user7,
+    images.user8,
+  ];
+
+  const [collectables, setCollectables] = useState(true);
+  const [created, setCreated] = useState(false);
+  const [like, setLike] = useState(false);
+  const [follower, setFollower] = useState(false);
+  const [following, setFollowing] = useState(false);
+
+  return (
+    <div className={Style.banner}>
+      <Banner bannerImage={images.creatorbackground2} />
+      <AuthorProfileCard />
+      <AuthorTaps
+        collectables={setCollectables}
+        created={setCreated}
+        like={setLike}
+        follower={setFollower}
+        following={setFollowing}
+      />
+      <Title
+        heading="Popular Creators"
+        paragraph="Click on music icon and enjoy NFT music or audio"
+      />
+      {/* {popularArray.map((el, i) => (
+        <FollowerTabCard el={el} i={i} key={i + 1} />
+      ))} */}
+      <Brand />
+    </div>
+  );
+};
+
+export default Author;
