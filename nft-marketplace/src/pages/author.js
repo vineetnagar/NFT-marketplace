@@ -7,7 +7,7 @@ import images from "../../img";
 import {
   AuthorProfileCard,
   AuthorTaps,
-  TabCard,
+  AuthorNFTCard,
 } from "../../authorPage/componentIndex";
 
 const Author = () => {
@@ -33,19 +33,23 @@ const Author = () => {
       <Banner bannerImage={images.creatorbackground2} />
       <AuthorProfileCard />
       <AuthorTaps
-        collectables={setCollectables}
-        created={setCreated}
-        like={setLike}
-        follower={setFollower}
-        following={setFollowing}
+        setCollectables={setCollectables}
+        setCreated={setCreated}
+        setLike={setLike}
+        setFollower={setFollower}
+        setFollowing={setFollowing}
+      />
+      <AuthorNFTCard
+        collectables={collectables}
+        created={created}
+        like={like}
+        follower={follower}
+        following={following}
       />
       <Title
         heading="Popular Creators"
         paragraph="Click on music icon and enjoy NFT music or audio"
       />
-      {/* {popularArray.map((el, i) => (
-        <FollowerTabCard el={el} i={i} key={i + 1} />
-      ))} */}
       <Brand />
     </div>
   );
