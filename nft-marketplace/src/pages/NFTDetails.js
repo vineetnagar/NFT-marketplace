@@ -1,5 +1,4 @@
 import React from "react";
-import Style from "../styles/NFTDetails.module.css";
 import {
   Button,
   Category,
