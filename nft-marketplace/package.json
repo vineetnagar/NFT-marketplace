@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.9.6",
     "ether": "^0.0.9",
     "framer-motion": "^13.1.0",
     "next": "16.2.12",
