@@ -43,6 +43,7 @@ const NavBar = () => {
       setDiscover(false);
       setHelp(false);
       setProfile(false);
+      s;
     } else {
       setNotification(false);
     }
