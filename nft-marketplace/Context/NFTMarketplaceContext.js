@@ -152,6 +152,20 @@ const fetchMyNFTsOrListedNFTs = async (type) => {
     console.log("Error while fetching lsited NFTs");
   }
 };
+
+//Buy NFTs function
+const buyNFT = async (nft) => {
+  try {
+    const contract = await connectingWithSmartContract();
+    const price = ethers.parseUnits(nft.price.toString(), "ether");
+    const transaction = await contract.createMarketSale(nft.tokenId, {
+      value: price,
+    });
+    await transaction.wait();
+  } catch (error) {
+    console.log("Error while buying nft", error);
+  }
+};
 // CONNECTING WITH SMART CONTRACT
 const connectingWithSmartContract = async () => {
   try {
@@ -180,15 +194,18 @@ export const NFTMarketplaceProvider = ({ children }) => {
     try {
       if (!window.ethereum) return console.log("Please install MetaMask");
 
-      const accounts = await window.ethereum.request({ method: "eth_request" });
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts",
+      });
 
       if (accounts.length) {
         setCurrentAccount(accounts[0]);
+        console.log("Current address:", accounts[0]);
       } else {
         console.log("No account found");
       }
     } catch (error) {
-      console.log("Something went wrong while connecting the wallet.");
+      console.log("Something went wrong while connecting the wallet.", error);
     }
   };
 
@@ -213,11 +230,14 @@ export const NFTMarketplaceProvider = ({ children }) => {
   return (
     <NFTMarketplaceContext.Provider
       value={{
+        checkIfWalletConnected,
         uploadToPinata,
         connectWallet,
         createNFT,
         fetchNFTs,
         fetchMyNFTsOrListedNFTs,
+        buyNFT,
+        currentAccount,
         titleData,
       }}
     >
