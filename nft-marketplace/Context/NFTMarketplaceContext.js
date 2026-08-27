@@ -215,16 +215,22 @@ export const NFTMarketplaceProvider = ({ children }) => {
 
   //connect wallet with button
   const connectWallet = async () => {
-    if (!window.ethereum) return console.log("Please install MetaMask");
-
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccount",
-    });
-    setCurrentAccount(accounts[0]);
-    window.location.reload();
     try {
+      if (!window.ethereum) {
+        return console.log("Please install MetaMask");
+      }
+
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      if (accounts.length > 0) {
+        setCurrentAccount(accounts[0]);
+
+        console.log("Wallet connected:", accounts[0]);
+      }
     } catch (error) {
-      console.log("Error while connecting to wallet.");
+      console.log("Error while connecting to wallet:", error);
     }
   };
   return (
