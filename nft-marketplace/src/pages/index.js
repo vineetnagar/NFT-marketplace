@@ -19,7 +19,7 @@ import {
 import { NFTMarketplaceContext } from "../../Context/NFTMarketplaceContext";
 
 const index = () => {
-  const {} = useContext(NFTMarketplaceContext);
+  const { checkContract } = useContext(NFTMarketplaceContext);
 
   return (
     <div className={Style.homePage}>
