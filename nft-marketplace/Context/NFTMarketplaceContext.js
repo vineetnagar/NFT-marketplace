@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import Web3Modal from "web3modal";
+import { NFTMarketplaceAddress, NFTMarketplaceABI } from "./constants";
+const fetchContract = (signerOrProvider) =>
+  new ethers.Contract(
+    ethers.getAddress(NFTMarketplaceAddress),
+    NFTMarketplaceABI,
+    signerOrProvider,
+  );
 import { ethers } from "ethers";
 import Router from "next/router";
 import axios from "axios";
@@ -30,14 +37,14 @@ const uploadToPinata = async (file) => {
   }
 };
 //function to create NFT
-const createNFT = async (formInput, fileUrl, router) => {
-  const { name, description, price } = formInput;
+const createNFT = async (name, price, image, description, router) => {
+  // const { name, description, price } = formInput;
 
-  if (!name || !description || !price || !fileUrl)
+  if (!name || !description || !price || !image)
     return console.log("Data is missing");
 
   try {
-    const metaData = { name, description, image: fileUrl };
+    const metaData = { name, description, image };
 
     //upload metadata json to pinata
 
@@ -64,22 +71,25 @@ const createNFT = async (formInput, fileUrl, router) => {
 
 //function for create Sale
 const createSale = async (url, formInputPrice, isReselling, id) => {
-  const price = ethers.parseUnits(formInputPrice, "ether");
-  const contract = await connectingWithSmartContract();
-
-  const listingPrice = await contract.listingPrice();
-
-  const transaction = !isReselling
-    ? await contract.createToken(url, price, { value: listingPrice.toString() })
-    : await contract.reSellToken(url, price, {
-        value: listingPrice.toString(),
-      });
-
-  await transaction.wait();
-  console.log("NFT sale created successfully");
   try {
+    const price = ethers.parseUnits(formInputPrice.toString(), "ether");
+
+    const contract = await connectingWithSmartContract();
+    const listingPrice = await contract.getListingPrice();
+
+    const transaction = !isReselling
+      ? await contract.createToken(url, price, {
+          value: listingPrice.toString(),
+        })
+      : await contract.reSellToken(url, price, {
+          value: listingPrice.toString(),
+        });
+
+    await transaction.wait();
+
+    console.log("NFT created successfully!", transaction);
   } catch (error) {
-    console.log("Error in creating sale", error);
+    console.log("Error in creating sale:", error);
   }
 };
 
@@ -166,19 +176,61 @@ const buyNFT = async (nft) => {
     console.log("Error while buying nft", error);
   }
 };
+const HARDHAT_CHAIN_ID = "0x7a69"; // 31337
+
+const switchToHardhatNetwork = async () => {
+  try {
+    await window.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: HARDHAT_CHAIN_ID }],
+    });
+  } catch (switchError) {
+    if (switchError.code === 4902) {
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: HARDHAT_CHAIN_ID,
+            chainName: "Hardhat Localhost",
+            rpcUrls: ["http://127.0.0.1:8545"],
+            nativeCurrency: {
+              name: "ETH",
+              symbol: "ETH",
+              decimals: 18,
+            },
+          },
+        ],
+      });
+    } else {
+      throw switchError;
+    }
+  }
+};
+
 // CONNECTING WITH SMART CONTRACT
 const connectingWithSmartContract = async () => {
   try {
-    const web3Modal = new Web3Modal({
-      cacheProvider: false,
-    });
-    const connection = await web3Modal.connect();
-    const provider = new ethers.BrowserProvider(connection);
-    const signer = await provider.getSigner();
+    if (!window.ethereum) {
+      console.log("Please install MetaMask");
+      throw new Error("Please install MetaMask");
+    }
+
+    await switchToHardhatNetwork();
+
+    const network = new ethers.Network("hardhat", 31337);
+    const provider = new ethers.BrowserProvider(window.ethereum, network);
+    const accounts = await provider.send("eth_requestAccounts", []);
+    const signer = new ethers.JsonRpcSigner(provider, accounts[0]);
+
     const contract = fetchContract(signer);
+
+    console.log("Contract:", contract);
+    console.log("Wallet:", await signer.getAddress());
+
     return contract;
   } catch (error) {
-    console.log("Something went wrong while connecting with contract");
+    console.error("Contract connection error:", error);
+    throw error;
   }
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Style from "./Subscription.module.css";
 import { TiTick } from "react-icons/ti";
-import { Button } from "../components/NavBar/componentIndex";
+import { Button } from "../../../components/NavBar/componentIndex";
 
 const Subscription = ({ el, i }) => {
   return (

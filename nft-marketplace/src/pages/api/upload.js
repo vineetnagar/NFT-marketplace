@@ -41,9 +41,8 @@ export default async function handler(req, res) {
       },
     );
 
-    const upload = await pinata.upload.file(file);
-    const url = `${process.env.NEXT_PUBLIC_PINATA_GATEWAY}/ipfs/${upload.cid}`;
-
+    const upload = await pinata.upload.public.file(file);
+    const url = `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY}/ipfs/${upload.cid}`;
     return res.status(200).json({
       success: true,
       cid: upload.cid,

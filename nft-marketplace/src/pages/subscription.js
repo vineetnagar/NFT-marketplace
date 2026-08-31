@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "../styles/subscription.module.css";
-import Subscription from "../../Subscription/Subscription";
+import Subscription from "../Subscription/Subscription";
 
 const subscription = () => {
   const subscriptionArray = [
