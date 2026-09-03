@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-
+import { useRouter } from "next/router";
 import Web3Modal from "web3modal";
 import { NFTMarketplaceAddress, NFTMarketplaceABI } from "./constants";
 const fetchContract = (signerOrProvider) =>
@@ -36,6 +36,7 @@ const uploadToPinata = async (file) => {
     console.log("Pinata upload error:", error);
   }
 };
+
 //function to create NFT
 const createNFT = async (name, price, image, description, router) => {
   // const { name, description, price } = formInput;
@@ -86,7 +87,7 @@ const createSale = async (url, formInputPrice, isReselling, id) => {
         });
 
     await transaction.wait();
-
+    Router.push("/searchPage");
     console.log("NFT created successfully!", transaction);
   } catch (error) {
     console.log("Error in creating sale:", error);
@@ -99,7 +100,7 @@ const fetchNFTs = async () => {
     const provider = new ethers.JsonRpcProvider();
     const contract = fetchContract(provider);
 
-    const data = await contract.fetchMarketItem();
+    const data = await contract.fetchUnsoldItem();
 
     const items = await Promise.all(
       data.map(async ({ tokenId, seller, owner, price: unformsttedPrice }) => {
@@ -107,12 +108,12 @@ const fetchNFTs = async () => {
 
         const {
           data: { image, name, description },
-        } = axios.get(tokenURI);
+        } = await axios.get(tokenURI);
 
         const price = ethers.formatUnits(unformsttedPrice, "ether");
         return {
           price,
-          tokenId: tokenId.Number(),
+          tokenId: Number(tokenId),
           seller,
           owner,
           image,
@@ -146,7 +147,7 @@ const fetchMyNFTsOrListedNFTs = async (type) => {
         const price = ethers.formatUnits(unformsttedPrice.toString(), "ether");
         return {
           price,
-          tokenId: tokenId.Number(),
+          tokenId: Number(tokenId),
           seller,
           owner,
           image,
@@ -234,13 +235,11 @@ const connectingWithSmartContract = async () => {
   }
 };
 
-export const NFTMarketplaceContext = React.createContext();
-
 export const NFTMarketplaceProvider = ({ children }) => {
+  const router = useRouter();
   const titleData = "Discover, collect, and sell NFTs ";
 
   const [currentAccount, setCurrentAccount] = useState("");
-
   //checl if wallet connected
   const checkIfWalletConnected = async () => {
     try {
@@ -263,6 +262,10 @@ export const NFTMarketplaceProvider = ({ children }) => {
 
   useEffect(() => {
     checkIfWalletConnected();
+  }, []);
+
+  useEffect(() => {
+    fetchNFTs();
   }, []);
 
   //connect wallet with button
@@ -303,3 +306,5 @@ export const NFTMarketplaceProvider = ({ children }) => {
     </NFTMarketplaceContext.Provider>
   );
 };
+
+export const NFTMarketplaceContext = React.createContext();
