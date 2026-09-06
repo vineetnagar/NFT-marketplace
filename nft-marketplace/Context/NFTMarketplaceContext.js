@@ -160,9 +160,14 @@ const fetchMyNFTsOrListedNFTs = async (type) => {
 
     return items;
   } catch (error) {
-    console.log("Error while fetching lsited NFTs");
+    console.log("Error while fetching listed NFTs");
+    return [];
   }
 };
+
+// useEffect(() =>{
+//   fetchMyNFTsOrListedNFTs()
+// }, [])
 
 //Buy NFTs function
 const buyNFT = async (nft) => {

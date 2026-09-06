@@ -177,7 +177,8 @@ const NFTDescription = ({ nft }) => {
               />
               <div className={Style.NFTDescription_box_profile_box_left_info}>
                 <small>Creator</small> <br />
-                <Link href={{ pathname: "/author", query: `${nft.seller}` }}>
+                <Link href={`/author/${nft.seller}`}>
+                  {" "}
                   <span>
                     Karli Costa <MdVerified />
                   </span>
@@ -261,9 +262,9 @@ const NFTDescription = ({ nft }) => {
             </div>
 
             <div className={Style.NFTDescription_box_profile_biding_box_button}>
-              {currentAccount === nft.seller.toLowerCase() ? (
+              {currentAccount === nft?.seller?.toLowerCase() ? (
                 <p>You cannot buy your own NFT.</p>
-              ) : currentAccount === nft.owner.toLowerCase() ? (
+              ) : currentAccount === nft?.owner?.toLowerCase() ? (
                 <Button
                   icon=<FaWallet />
                   btnName="List on MarketPlace"
