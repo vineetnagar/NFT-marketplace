@@ -207,7 +207,25 @@
   }
 
   .NFTDescription_box_profile_biding_box_price_bid p {
-    font-size: 1rem;
+    font-size: 0.8rem !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .NFTDescription_box_profile_biding_box_price_bid .price {
+    font-size: 0.8rem;
+  }
+
+  .NFTDescription_box_profile_biding_box_price_bid .eth {
+    font-size: 0.8rem;
+  }
+
+  .NFTDescription_box_profile_biding_box_price_bid .dollar {
+    font-size: 0.65rem;
   }
 
   .NFTDescription_box_profile_biding_box_button {

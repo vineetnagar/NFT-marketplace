@@ -173,6 +173,7 @@ const buyNFT = async (nft) => {
       value: price,
     });
     await transaction.wait();
+    Router.push("/author");
   } catch (error) {
     console.log("Error while buying nft", error);
   }
