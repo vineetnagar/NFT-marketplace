@@ -82,7 +82,7 @@ const createSale = async (url, formInputPrice, isReselling, id) => {
       ? await contract.createToken(url, price, {
           value: listingPrice.toString(),
         })
-      : await contract.reSellToken(url, price, {
+      : await contract.reSellToken(id, price, {
           value: listingPrice.toString(),
         });
 
@@ -133,10 +133,12 @@ const fetchNFTs = async () => {
 const fetchMyNFTsOrListedNFTs = async (type) => {
   try {
     const contract = await connectingWithSmartContract();
+    console.log("1");
     const data =
       type == "fetchItemsListed"
         ? await contract.fetchItemsListed()
         : await contract.fetchMyNFT();
+    console.log("2", data);
 
     const items = await Promise.all(
       data.map(async ({ tokenId, seller, owner, price: unformsttedPrice }) => {

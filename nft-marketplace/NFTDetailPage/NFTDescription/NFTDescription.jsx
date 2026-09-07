@@ -22,6 +22,7 @@ import { Button } from "../../components/NavBar/componentIndex";
 import { NFTTabs } from "../NFTDetailsIndex";
 import images from "../../img";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 //import Smart Contract
 import { NFTMarketplaceContext } from "../../Context/NFTMarketplaceContext";
@@ -32,6 +33,7 @@ const NFTDescription = ({ nft }) => {
   const [provanance, setProvanance] = useState(false);
   const [owner, setOwner] = useState(false);
 
+  const router = useRouter();
   const historyArray = [
     images.user1,
     images.user2,
@@ -177,7 +179,7 @@ const NFTDescription = ({ nft }) => {
               />
               <div className={Style.NFTDescription_box_profile_box_left_info}>
                 <small>Creator</small> <br />
-                <Link href={`/author/${nft.seller}`}>
+                <Link href={{ pathname: "/author", query: `${nft.seller}` }}>
                   {" "}
                   <span>
                     Karli Costa <MdVerified />
@@ -262,9 +264,9 @@ const NFTDescription = ({ nft }) => {
             </div>
 
             <div className={Style.NFTDescription_box_profile_biding_box_button}>
-              {currentAccount === nft?.seller?.toLowerCase() ? (
-                <p>You cannot buy your own NFT.</p>
-              ) : currentAccount === nft?.owner?.toLowerCase() ? (
+              {currentAccount == nft?.seller?.toLowerCase() ? (
+                <p>You Cannot buy your own NFT.</p>
+              ) : currentAccount == nft?.owner?.toLowerCase() ? (
                 <Button
                   icon=<FaWallet />
                   btnName="List on MarketPlace"
@@ -290,7 +292,9 @@ const NFTDescription = ({ nft }) => {
             <div className={Style.NFTDescription_box_profile_biding_box_tabs}>
               <button onClick={(e) => openTabs(e)}>Bid History</button>
               <button onClick={(e) => openTabs(e)}>Provanance</button>
-              <button onClick={() => openOwmer()}>Owner</button>
+              <Button handleClick={() => router.push("/reSellToken")}>
+                list on marketplace
+              </Button>
             </div>
 
             {history && (
