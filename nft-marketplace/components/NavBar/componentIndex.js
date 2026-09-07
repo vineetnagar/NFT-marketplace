@@ -21,6 +21,7 @@ import Slider from "../Slider/Slider";
 import SliderCard from "../Slider/SliderCard/SliderCard";
 import Brand from "../Brand/Brand";
 import Video from "../Video/Video";
+import Loader from "../Loader/Loader";
 
 export {
   Button,
@@ -46,4 +47,5 @@ export {
   SliderCard,
   Brand,
   Video,
+  Loader,
 };

@@ -292,7 +292,13 @@ const NFTDescription = ({ nft }) => {
             <div className={Style.NFTDescription_box_profile_biding_box_tabs}>
               <button onClick={(e) => openTabs(e)}>Bid History</button>
               <button onClick={(e) => openTabs(e)}>Provanance</button>
-              <Button handleClick={() => router.push("/reSellToken")}>
+              <Button
+                handleClick={() =>
+                  router.push(
+                    `/reSellToken?id=${nft.tokenId}&tokenURI=${nft.tokenURI}`,
+                  )
+                }
+              >
                 list on marketplace
               </Button>
             </div>

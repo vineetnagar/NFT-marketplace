@@ -10,6 +10,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.6",
     "axios": "^1.19.0",
+    "bootstrap": "^5.3.8",
     "ether": "^0.0.9",
     "formidable": "^3.5.4",
     "framer-motion": "^13.1.0",

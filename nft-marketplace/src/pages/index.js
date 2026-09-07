@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Style from "../styles/index.module.css";
+import { Loader } from "../../components/NavBar/componentIndex";
 import {
   HeroSection,
   Service,
@@ -15,6 +16,7 @@ import {
   Slider,
   Brand,
   Video,
+  Loader,
 } from "../../components/NavBar/componentIndex";
 import { NFTMarketplaceContext } from "../../Context/NFTMarketplaceContext";
 
@@ -23,6 +25,25 @@ const index = () => {
   useEffect(() => {
     checkIfWalletConnected();
   }, []);
+
+  const { fetchNFTs } = useContext(NFTMarketplaceContext);
+  const [nfts, setNfts] = useState([]);
+  const [nftsCopy, setNftsCopy] = useState([]);
+
+  useEffect(() => {
+    const getNFTs = async () => {
+      try {
+        const items = await fetchNFTs();
+        console.log(items);
+        setNfts(items.reverse());
+        setNftsCopy(items);
+      } catch (error) {
+        console.log("Error fetching NFTs on search page:", error);
+      }
+    };
+    getNFTs();
+  }, [fetchNFTs]);
+
   return (
     <div className={Style.homePage}>
       <HeroSection />
@@ -45,7 +66,7 @@ const index = () => {
         paragraph="Discover the most outstanding NFTs in all topics of life,"
       />
       <Filter />
-      <NFTCard />
+      {nfts.length == 0 ? <Loader /> : <NFTCard NFTData={nfts} />}
       <Title
         heading="Browse by category"
         paragraph="Explore the NFTs in the most featured categories."

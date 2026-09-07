@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { GrClose } from "react-icons/gr";
 import {
@@ -18,7 +19,7 @@ import Button from "../../Button/Button";
 const SideBar = ({ setOpenSideMenu, currentAccount, connectWallet }) => {
   const [openDiscover, setOpenDiscover] = useState(false);
   const [openHelp, setOpenHelp] = useState(false);
-
+  const router = useRouter();
   const discover = [
     {
       name: "Collection",
@@ -170,9 +171,10 @@ const SideBar = ({ setOpenSideMenu, currentAccount, connectWallet }) => {
         {currentAccount == "" ? (
           <Button btnName="connect" handleClick={() => connectWallet()} />
         ) : (
-          <a href="/uploadNFT">
-            <Button btnName="Create" handleClick={() => {}} />
-          </a>
+          <Button
+            btnName="Create"
+            handleClick={() => router.push("/uploadNFT")}
+          />
         )}
 
         <Button btnName="Connect Wallet" handleClick={() => {}} />

@@ -17,7 +17,6 @@ const reSellToken = () => {
   const fetchNFT = async () => {
     if (!tokenURI) return;
     const { data } = await axios.get(tokenURI);
-    setPrice(data.price);
     setImage(data.image);
   };
   useEffect(() => {
@@ -25,8 +24,12 @@ const reSellToken = () => {
   }, [id]);
 
   const reSell = async () => {
-    await createSale(tokenURI, price, true, id);
-    router.push("/author");
+    try {
+      await createSale(tokenURI, price, true, id);
+      router.push("/author");
+    } catch (error) {
+      console.log("Error in reSell function", error.message);
+    }
   };
   return (
     <div className={Style.reSellToken}>
@@ -39,6 +42,7 @@ const reSellToken = () => {
             min={1}
             placeholder="vineet nagar"
             className={formStyle.Form_box_input_userName}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
         <div className={Style.reSellToken_box_image}>

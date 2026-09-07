@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MdNotifications } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
 import { CgMenuLeft, CgMenuRight } from "react-icons/cg";
-
+import { useRouter } from "next/router";
 import Style from "./NavBar.module.css";
 import { Discover, HelpCenter, Notification, Profile, SideBar } from "./index";
 import { Button } from "./componentIndex";
@@ -18,7 +18,7 @@ const NavBar = () => {
   const [notification, setNotification] = useState(false);
   const [profile, setProfile] = useState(false);
   const [openSideMenu, setOpenSideMenu] = useState(false);
-
+  const router = useRouter();
   const openMenu = (e) => {
     const btnText = e.target.innerText;
     if (btnText == "Discover") {
@@ -121,9 +121,10 @@ const NavBar = () => {
             {currentAccount === "" ? (
               <Button btnName="Connect" handleClick={() => connectWallet()} />
             ) : (
-              <a href="/uploadNFT">
-                <Button btnName="Create" handleClick={() => {}} />
-              </a>
+              <Button
+                btnName="Create"
+                handleClick={() => router.push("/uploadNFT")}
+              />
             )}
           </div>
 
@@ -138,7 +139,7 @@ const NavBar = () => {
                 className={Style.navbar_container_right_profile}
               />
 
-              {profile && <Profile />}
+              {profile && <Profile currentAccount={currentAccount} />}
             </div>
           </div>
 

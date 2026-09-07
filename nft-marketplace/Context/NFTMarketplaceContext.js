@@ -306,6 +306,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
         fetchNFTs,
         fetchMyNFTsOrListedNFTs,
         buyNFT,
+        createSale,
         currentAccount,
         titleData,
       }}

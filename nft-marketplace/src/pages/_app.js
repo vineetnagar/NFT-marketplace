@@ -7,7 +7,7 @@ const App = ({ Component, pageProps }) => (
   <div>
     <NFTMarketplaceProvider>
       <NavBar />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
       <Footer />
     </NFTMarketplaceProvider>
   </div>
