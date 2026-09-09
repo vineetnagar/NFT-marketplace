@@ -7,7 +7,7 @@ import { CgMenuLeft, CgMenuRight } from "react-icons/cg";
 import { useRouter } from "next/router";
 import Style from "./NavBar.module.css";
 import { Discover, HelpCenter, Notification, Profile, SideBar } from "./index";
-import { Button } from "./componentIndex";
+import { Button, Error } from "./componentIndex";
 import images from "../../img";
 
 //import from Smart contract
@@ -69,7 +69,9 @@ const NavBar = () => {
     }
   };
 
-  const { currentAccount, connectWallet } = useContext(NFTMarketplaceContext);
+  const { currentAccount, connectWallet, openError } = useContext(
+    NFTMarketplaceContext,
+  );
   return (
     <div className={Style.navbar}>
       <div className={Style.navbar_container}>
@@ -161,6 +163,8 @@ const NavBar = () => {
           />
         </div>
       )}
+
+      {openError && <Error />}
     </div>
   );
 };

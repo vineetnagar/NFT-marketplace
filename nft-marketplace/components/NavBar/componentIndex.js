@@ -22,6 +22,7 @@ import SliderCard from "../Slider/SliderCard/SliderCard";
 import Brand from "../Brand/Brand";
 import Video from "../Video/Video";
 import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
 
 export {
   Button,
@@ -33,6 +34,7 @@ export {
   Subscribe,
   Title,
   Category,
+  Error,
   Filter,
   NFTCard,
   Collection,

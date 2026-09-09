@@ -247,11 +247,14 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const router = useRouter();
   const titleData = "Discover, collect, and sell NFTs ";
 
+  const [error, setError] = useState("");
+  const [openError, setOpenError] = useState(false);
   const [currentAccount, setCurrentAccount] = useState("");
   //checl if wallet connected
   const checkIfWalletConnected = async () => {
     try {
-      if (!window.ethereum) return console.log("Please install MetaMask");
+      if (!window.ethereum)
+        return setOpenError(true), setError("Please install MetaMask");
 
       const accounts = await window.ethereum.request({
         method: "eth_accounts",
@@ -261,10 +264,11 @@ export const NFTMarketplaceProvider = ({ children }) => {
         setCurrentAccount(accounts[0]);
         console.log("Current address:", accounts[0]);
       } else {
-        console.log("No account found");
+        setOpenError(true), setError("No account found");
       }
     } catch (error) {
-      console.log("Something went wrong while connecting the wallet.", error);
+      setOpenError(true),
+        setError("Something went wrong while connecting the wallet.", error);
     }
   };
 
@@ -280,7 +284,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const connectWallet = async () => {
     try {
       if (!window.ethereum) {
-        return console.log("Please install MetaMask");
+        return setOpenError(true), setError("Please install MetaMask");
       }
 
       const accounts = await window.ethereum.request({
@@ -293,7 +297,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
         console.log("Wallet connected:", accounts[0]);
       }
     } catch (error) {
-      console.log("Error while connecting to wallet:", error);
+      setOpenError(true), setError("Error while connecting to wallet:", error);
     }
   };
   return (

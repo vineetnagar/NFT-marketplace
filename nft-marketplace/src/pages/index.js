@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Style from "../styles/index.module.css";
-import { Loader } from "../../components/NavBar/componentIndex";
+// import { Loader } from "../../components/NavBar/componentIndex";
 import {
   HeroSection,
   Service,
@@ -16,8 +16,9 @@ import {
   Slider,
   Brand,
   Video,
-  Loader,
+  // Loader,
 } from "../../components/NavBar/componentIndex";
+import { getTopCreators } from "../../TopCreators/TopCreators";
 import { NFTMarketplaceContext } from "../../Context/NFTMarketplaceContext";
 
 const index = () => {
@@ -30,6 +31,8 @@ const index = () => {
   const [nfts, setNfts] = useState([]);
   const [nftsCopy, setNftsCopy] = useState([]);
 
+  const creators = getTopCreators(nfts);
+  // console.log(creators);
   useEffect(() => {
     const getNFTs = async () => {
       try {
@@ -54,7 +57,7 @@ const index = () => {
         paragraph="Discover the most outstanding NFTs in all topics of life,"
       />
       <AudioLive />
-      <Follower />
+      <Follower TopCreator={creators} />
       <Title
         heading="Explore NFT's Video"
         paragraph="Click on play icon and enjoy NFT's video"
@@ -66,7 +69,7 @@ const index = () => {
         paragraph="Discover the most outstanding NFTs in all topics of life,"
       />
       <Filter />
-      {nfts.length == 0 ? <Loader /> : <NFTCard NFTData={nfts} />}
+      {/* {nfts.length == 0 ? <Loader /> : */ <NFTCard NFTData={nfts} /> /*} */}
       <Title
         heading="Browse by category"
         paragraph="Explore the NFTs in the most featured categories."
