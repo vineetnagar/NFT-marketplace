@@ -1,11 +1,23 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Web3Modal from "web3modal";
-import { NFTMarketplaceAddress, NFTMarketplaceABI } from "./constants";
+import {
+  NFTMarketplaceAddress,
+  NFTMarketplaceABI,
+  transferFundsAddress,
+  transferFundsABI,
+} from "./constants";
 const fetchContract = (signerOrProvider) =>
   new ethers.Contract(
     ethers.getAddress(NFTMarketplaceAddress),
     NFTMarketplaceABI,
+    signerOrProvider,
+  );
+
+const fetchTransferFundsContract = (signerOrProvider) =>
+  new ethers.Contract(
+    ethers.getAddress(transferFundsAddress),
+    transferFundsABI,
     signerOrProvider,
   );
 import { ethers } from "ethers";
@@ -243,6 +255,35 @@ const connectingWithSmartContract = async () => {
   }
 };
 
+//------------------------------------------------//
+//------------Transfer funds---------------------//
+
+const connectToTransferFunds = async () => {
+  try {
+    if (!window.ethereum) {
+      console.log("Please install MetaMask");
+      throw new Error("Please install MetaMask");
+    }
+
+    await switchToHardhatNetwork();
+
+    const network = new ethers.Network("hardhat", 31337);
+    const provider = new ethers.BrowserProvider(window.ethereum, network);
+    const accounts = await provider.send("eth_requestAccounts", []);
+    const signer = new ethers.JsonRpcSigner(provider, accounts[0]);
+
+    const contract = fetchContract(signer);
+
+    console.log("Contract:", contract);
+    console.log("Wallet:", await signer.getAddress());
+
+    return contract;
+  } catch (error) {
+    console.error("Contract connection error:", error);
+    throw error;
+  }
+};
+
 export const NFTMarketplaceProvider = ({ children }) => {
   const router = useRouter();
   const titleData = "Discover, collect, and sell NFTs ";
@@ -250,7 +291,13 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [openError, setOpenError] = useState(false);
   const [currentAccount, setCurrentAccount] = useState("");
-  //checl if wallet connected
+
+  const [transactionCount, setTransactionCount] = useState("");
+  const [transaction, setTransaction] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [accountBalance, setAccountBalance] = useState("");
+
+  //check if wallet connected
   const checkIfWalletConnected = async () => {
     try {
       if (!window.ethereum)
@@ -266,6 +313,11 @@ export const NFTMarketplaceProvider = ({ children }) => {
       } else {
         setOpenError(true), setError("No account found");
       }
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const getBalance = await provider.getBalance(accounts[0]);
+      const bal = ethers.formatEther(getBalance);
+      setAccountBalance(bal);
     } catch (error) {
       setOpenError(true),
         setError("Something went wrong while connecting the wallet.", error);
@@ -300,6 +352,67 @@ export const NFTMarketplaceProvider = ({ children }) => {
       setOpenError(true), setError("Error while connecting to wallet:", error);
     }
   };
+
+  const transferEther = async (address, ether, message) => {
+    try {
+      if (currentAccount) {
+        const contract = await connectToTransferFunds();
+        const unformattedPrice = ethers.parseEther(ether.toString());
+        console.log(address, ether, message);
+
+        const transaction = await window.ethereum.request({
+          method: "eth_sendTransaction",
+          params: [
+            {
+              from: currentAccount,
+              to: address,
+              gas: "0x5208",
+              value: unformattedPrice.toString(16),
+            },
+          ],
+        });
+
+        const transactionToAddDataToBlockchain =
+          await contract.addDataToBlockchain(
+            address,
+            unformattedPrice,
+            message,
+          );
+        await transactionToAddDataToBlockchain.wait();
+        setLoading(false);
+
+        const transactionCount = await contract.getTransactionCount();
+        setTransactionCount(Number(transactionCount));
+      }
+    } catch (error) {
+      console.log("Transfer funds error", error);
+    }
+  };
+
+  const getAllTransactions = async () => {
+    try {
+      if (windows.ethereum) {
+        const contract = await connectToTransferFunds();
+        const availableTransactions = await contract.getAllTransaction();
+
+        const readTransaction = availableTransactions.map((transaction) => ({
+          addressTo: transaction.receiver,
+          addressFrom: transaction.sender,
+          timestamp: new Date(
+            Number(transaction.timestamp) * 1000,
+          ).toLocalString(),
+          message: transaction.message,
+          amount: parseInt(transaction.amount._hex) / 10 ** 18,
+        }));
+
+        setTransaction(readTransaction);
+      } else {
+        console.log("On Ethereum");
+      }
+    } catch (error) {
+      console.log("GetAllTransactions Error", error);
+    }
+  };
   return (
     <NFTMarketplaceContext.Provider
       value={{
@@ -313,6 +426,13 @@ export const NFTMarketplaceProvider = ({ children }) => {
         createSale,
         currentAccount,
         titleData,
+        setOpenError,
+        openError,
+        transferEther,
+        accountBalance,
+        transactionCount,
+        transaction,
+        getAllTransactions,
       }}
     >
       {children}

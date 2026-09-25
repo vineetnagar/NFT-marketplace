@@ -62,7 +62,7 @@ const Form = () => {
                 <div className={Style.Form_box_input_box_icon}>
                   <TiSocialFacebook />
                 </div>
-                <input type="text" placeholder="http://shoaib" />
+                <input type="text" placeholder="http://vineet" />
               </div>
             </div>
             <div className={Style.Form_box_input}>
